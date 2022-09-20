@@ -1,0 +1,46 @@
+﻿.booking_form {
+    position: relative;
+    left: 10%;
+    top: 20%;
+    height: 450px;
+    width: 400px;
+    background-color: rgba(215, 215, 215, 0.7);
+    text-align: center;
+    padding:20px;
+}
+
+.top-area {
+    background-image: url("./../images/main.jpg");
+    height: 750px;
+}
+
+.best-rooms {
+    text-align:center;
+}
+
+.best-room-card {
+    height: 400px;
+    width: 800px;
+    border: 2px solid #5E72A6;
+    margin: 20px auto;
+    background-size:100% 100%;
+}
+.roomCard-panel {
+    position: relative;
+    height: 101%;
+    width: 400px;
+    background-color: rgba(215, 215, 215, 0.7);
+    text-align:left;
+    padding:30px;
+}
+    .roomCard-panel button {
+        height: 40px;
+        width: 150px;
+        vertical-align: bottom;
+        background-color: #4D9295;
+        border: none;
+        color:white;
+    }
+h1 {
+    top: 50px;
+}
