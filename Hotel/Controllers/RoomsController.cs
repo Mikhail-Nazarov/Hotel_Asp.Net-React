@@ -22,5 +22,10 @@ namespace Hotel.Controllers
                 rooms.Add(db.Rooms.ToList()[i]);
             return rooms;
         }
+        [HttpGet("getById/:{id}")]
+        public Room GetById(int id)
+        {
+            return db.Rooms.Where(x=>x.Id==id).First();
+        }
     }
 }

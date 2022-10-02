@@ -3,6 +3,7 @@ import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { Rooms } from './components/Rooms';
+import { Room } from './components/Room';
 import { About } from './components/About';
 import { Contacts } from './components/Contacts';
 
@@ -18,7 +19,8 @@ export default class App extends Component {
       <Layout>
         <Route exact path='/' component={Home} />
         <Route path='/about' component={About} />
-        <Route path='/rooms' component={Rooms} />
+            <Route path='/rooms' component={Rooms} />
+            <Route path='/room/:number' component={Room} />
         <Route path='/contacts' component={Contacts} />
       </Layout>
     );

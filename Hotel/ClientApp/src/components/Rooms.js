@@ -3,16 +3,27 @@ import { RoomCard } from './RoomCard';
 import { Heading } from './Heading';
 
 export class Rooms extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            RoomsList: []
+        }
+    }
+    componentDidMount() {
+        this.LoadData();
+    }
     render() {
         return (
             <div className="content" style={{ marginTop: '50px' }}>
-                <Heading Head="Наши номера"/>
-                <RoomCard Image='./../images/room2.jpg' Price='3000' />
-                <RoomCard Image='./../images/room2.jpg' Price='3000' />
-                <RoomCard Image='./../images/room2.jpg' Price='3000' />
-                <RoomCard Image='./../images/room2.jpg' Price='3000' />
-                <RoomCard Image='./../images/room2.jpg' Price='3000' />
+                <Heading Head="Наши номера" />
+                {this.state.RoomsList.map(item => (
+                    <RoomCard data={item} />))}
             </div>
         );
+    }
+    async LoadData() {
+        const response = await fetch('api/rooms');
+        const data = await response.json();
+        this.setState({ RoomsList: data });
     }
 }

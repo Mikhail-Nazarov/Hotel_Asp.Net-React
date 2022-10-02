@@ -1,35 +1,45 @@
 ﻿import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export class RoomCard extends Component {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            isHover: false,
+        };
+    }
     render() {
+        const handleMouseEnter = () => {
+            this.setState({ isHover: true });
+        };
+        const handleMouseLeave = () => {
+            this.setState({ isHover: false });
+        };
+        const imgPath = this.props.data.imgPaths.split(' ')[0];
+        const services = this.props.data.services.split(',');
+        const url = '/room/:' + this.props.data.id;
         return (
-            <div className="room-card">
-                <div>
-                    <img src={require('./../images/room3.jpg')} style={{ width: '100%', height: '100%' }}></img>                
-                </div>
-                <div style={{ padding: '0 0 15px 15px', borderTop: '2px solid #5E72A6', textAlign: 'left' }}>
+            <div onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className="room-card">
+                <img src={'images/' + imgPath} style={{ width: '100%', height:'100%' }} />
+                <div style={{ position: 'relative', padding: '0 0 15px 15px', borderTop: '2px solid #5E72A6', textAlign: 'left' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between'}}>
-                        <h4 style={{ paddingTop:'15px' }}>Название номера</h4>
+                        <h4 style={{ paddingTop: '15px' }}>{this.props.data.name}</h4>
                         <div className="price">
                             <h3>
-                                {this.props.Price} р.
+                                { this.props.data.price } р.
                             </h3>
                         </div>
                     </div>
-                    <p>Доехали вопреки ожиданиям быстро, примерно за 3-4 часа. Погода была пасмурная и даже не смотря на то, что мы находимся недалеко от экватора,
-                        было прохладно. Почти все время, пока мы ехали, по обе стороны дороги были</p>
+                    <p>{this.props.data.description}</p>
                     <lu className="services">
-                        <Serice ServiceName='2 комнаты' />
-                        <Serice ServiceName='Уборка' />
-                        <Serice ServiceName='Красивый вид' />
-                        <Serice ServiceName='Минибар' />
-                        <Serice ServiceName='2 кровати' />
-                        <Serice ServiceName='2 комнаты' />
-                        <Serice ServiceName='2 комнаты' />
-                        <Serice ServiceName='2 комнаты' />
-                        <Serice ServiceName='2 комнаты' />
+                        {services.map(item => (
+                            <Service ServiceName={item } />))}
                     </lu>
+                    <Link to={url}>
+                        <button style={{ position: 'absolute', right: '0', bottom: '0' }}>Подробнее</button>
+                    </Link>
                 </div>
 
             </div>
@@ -37,7 +47,7 @@ export class RoomCard extends Component {
     }
 }
 
-class Serice extends Component {
+export class Service extends Component {
 
     render() {
         return (

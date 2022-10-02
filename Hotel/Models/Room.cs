@@ -13,6 +13,8 @@ namespace Hotel.Models
         public DateTime startOfBooking { get; set; }
         public DateTime endOfBooking { get; set; }
         public string imgPaths { get; set; }
+        public string services { get; set; }
+        public string description { get; set; }
 
     }
 }
